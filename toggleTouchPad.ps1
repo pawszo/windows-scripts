@@ -1,0 +1,1 @@
+Get-PnpDevice | Where-Object {$_.Name -like '*Synaptics TPFHID*'} | Disable-PnpDevice -Confirm:$false
