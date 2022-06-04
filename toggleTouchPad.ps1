@@ -1,8 +1,9 @@
 $touchpad = Get-PnpDevice | Where-Object {$_.FriendlyName -like '*TPFHID*'} 
+$touchpadId = $touchpad.InstanceId
 
-if($touchpad.Status.equals("Error")) {
-Get-PnpDevice | Where-Object {$_.FriendlyName -like '*TPFHID*'} | Enable-PnpDevice -Confirm:$false
+if($touchpad.Status.equals("OK")) {
+	Disable-PnpDevice -InstanceId $touchpadId -Confirm:$false
 }
 else {
-Get-PnpDevice | Where-Object {$_.FriendlyName -like '*TPFHID*'} | Disable-PnpDevice -Confirm:$false
+	Enable-PnpDevice -InstanceId $touchpadId -Confirm:$false
 }
